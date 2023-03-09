@@ -50,6 +50,76 @@ void Line::set_length(int dl) {
     length = dl;
     printf_s("Length = %d\n", length);
 }
+//part 2 --------------------------------------------------------------------------------------------------
+class Car {
+private:
+    int max_speed;
+protected:
+    int price;
+public:
+    Car() {
+        printf("Car()\n");
+        max_speed = 50;
+        price = 100'000;
+
+    }
+    Car(int max_speed) {
+        printf("Car(int max_speed)\n");
+        this->max_speed = max_speed;
+        this->price = 50000;
+    }
+    Car(int max_speed, int price) : Car(max_speed) {
+        printf("Car(int max_speed, int price)\n");
+        this->price = price;
+    }
+    Car(const Car& c) {
+        printf("Car(const Car& c)\n");
+        max_speed = c.max_speed;
+        price = c.price;
+    }
+    void demonstrate() {
+        printf("Car::void demonstrate()\n");
+        printf("Maximum speed: %d, price: %d\n", max_speed, price);
+
+    }
+    ~Car() {
+        printf("~Car()\n");
+        printf("Maximum speed: %d, price: %d\n", max_speed, price);
+    }
+
+};
+
+
+
+class Truck : public Car {
+    int power_traction;
+public:
+    Truck() : Car() {
+        printf("Truck()\n");
+        power_traction = 1;
+    }
+    Truck(int speed, int price, int power_traction) : Car(speed) {
+        printf("Truck(int speed, int price, int power_traction)\n");
+        //this->speed = speed - Ошибка. Дочерний класс не может использовать свойства private. Поэтому делегируем в конструктор с параметром базового класса
+        this->price = price;
+        this->power_traction = power_traction;
+    }
+    Truck(const Truck& t) :Car(t) {
+        printf("Car(const Truck& t)\n");
+        this->power_traction = t.power_traction;
+    }
+    ~Truck() {
+        printf("~Truck()\n");
+        printf("Power Traction is %d\n", power_traction);
+    }
+    void demonstrate() {
+        printf("Truck::void demonstrate()\n");
+        Car::demonstrate();
+        printf("Power Traction is %d\n", power_traction);
+    };
+};
+
+
 int main()
 {
     //part 1--------------------------------------------------------------------------------------------------------------------
@@ -99,7 +169,18 @@ int main()
     delete ld3;
     delete ld4;
 
-    printf_s("-----------------------------------------------------------------------------------");
+    printf_s("-----------------------------------------------------------------------------------\n");
+    printf_s("Часть вторая");
+
+    Truck* t1 = new Truck;
+    t1->demonstrate();
+    Car* t2 = new Truck(100, 100'000, 56);
+    t2->demonstrate();
+    delete t1;
+    delete t2;
+
+    printf("-------------------------------------------------------------------------------------------------\n");
+
 }
 
 
