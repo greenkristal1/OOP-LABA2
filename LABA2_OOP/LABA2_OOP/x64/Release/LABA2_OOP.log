@@ -1,6 +1,8 @@
 ﻿  LABA2_OOP.cpp
+D:\угату\2_курс\ооп\laba#2\LABA2_OOP\LABA2_OOP\LABA2_OOP.cpp(286,11): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
   Создание кода
-  Previous IPDB not found, fall back to full compilation.
-  All 12 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  3 of 37 functions ( 8.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   LABA2_OOP.vcxproj -> D:\угату\2_курс\ооп\laba#2\LABA2_OOP\x64\Release\LABA2_OOP.exe

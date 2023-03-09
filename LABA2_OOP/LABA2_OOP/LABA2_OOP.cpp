@@ -91,6 +91,7 @@ public:
 
 
 
+
 class Truck : public Car {
     int power_traction;
 public:
@@ -119,6 +120,102 @@ public:
     };
 };
 
+//part 3
+class Spoon {
+protected:
+    int length;
+public:
+    Spoon() {
+        printf_s("Spoon()\n");
+        length = 10;
+    }
+    Spoon(int l) {
+        printf_s("Spoon(int l)\n");
+        length = l;
+    }
+    Spoon(const Spoon& s) {
+        printf_s("Spoon(const Spoon& s)\n");
+        length = s.length;
+    }
+    ~Spoon() {
+        printf_s("~Spoon()\n");
+        printf_s("Length: %d\n", length);
+    }
+    void show_spoon_length() {
+        printf_s("void show_spoon_length()\n");
+        printf_s("Length of spoon is %d\n", length);
+    }
+
+};
+
+class Knife {
+protected:
+    double sharpness;
+    int length;
+public:
+    Knife() {
+        printf("Knife()\n");
+        sharpness = 1;
+        length = 10;
+    }
+    Knife(double sharp, int length) {
+        printf("Knife(int sharp, int length)\n");
+        if (sharp <= 1) {
+            sharpness = sharp;
+        }
+        else {
+            printf("Incoreect sharpness. Set to 1 by default\n");
+            sharpness = 1;
+        }
+        this->length = length;
+    }
+    Knife(const Knife& k) {
+        printf("Knife(const Knife& k)\n");
+        sharpness = k.sharpness;
+        length = k.length;
+    }
+    ~Knife() {
+        printf("~Knife()\n");
+        printf("Length: %d, Sharpness: %f\n", length, sharpness);
+    }
+    void show_sharpness() {
+        printf("void show_sharpness()\n");
+        printf("Sharpness is %f\n", this->sharpness);
+    }
+    double get_length() {
+        printf("int get_length()\n");
+        return length;
+    }
+};
+
+class Utensils {
+public:
+    Spoon* s;
+    Knife* k;
+
+
+    Utensils() {
+        printf("Utensils()\n");
+        s = new Spoon();
+        k = new Knife();
+    }
+    Utensils(int spoon_length, int knife_length, double sharpness) {
+        printf("Utensils(int spoon_length, int knife_length, double sharpness)\n");
+        s = new Spoon(spoon_length);
+        k = new Knife(sharpness, knife_length);
+    }
+    Utensils(const Utensils& u) {
+        printf("Utensils(const Utensils& u)\n");
+        s = new Spoon(*(u.s));
+        k = new Knife(*(u.k));
+    }
+    ~Utensils() {
+
+        delete s;
+        delete k;
+        printf("~Utensils()\n");
+    }
+};
 
 int main()
 {
@@ -180,6 +277,18 @@ int main()
     delete t2;
 
     printf("-------------------------------------------------------------------------------------------------\n");
+    //part 3
+    
+    Utensils* u = new Utensils(8, 12, 0.7);
+    
+   
+    u->k->show_sharpness();
+    int l = u->k->get_length();
+    printf_s("The length of knife is %d", l);
+    u->s->show_spoon_length();
+    
+    delete u;
+    
 
 }
 
