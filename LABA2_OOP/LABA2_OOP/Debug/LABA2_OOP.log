@@ -1,0 +1,6 @@
+﻿  LABA2_OOP.cpp
+D:\угату\2_курс\ооп\laba#2\LABA2_OOP\LABA2_OOP\LABA2_OOP.cpp(102,8): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+D:\угату\2_курс\ооп\laba#2\LABA2_OOP\LABA2_OOP\LABA2_OOP.cpp(102,1): error C2365: printf: переопределение; предыдущим определением было "функция"
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\stdio.h(950): message : см. объявление "printf"
+D:\угату\2_курс\ооп\laba#2\LABA2_OOP\LABA2_OOP\LABA2_OOP.cpp(103,1): error C2059: синтаксическая ошибка: }
+D:\угату\2_курс\ооп\laba#2\LABA2_OOP\LABA2_OOP\LABA2_OOP.cpp(103,1): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
